@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html t:type="layout"
+      t:title="Home"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+
+	<script>
+		var activeNavBarButton = "projects";
+	</script>
+
+	<t:loop source="projects" value="project">
+		<div class="project-pane well">
+			<t:pagelink class="project-name" page="project" context="project.name">${project.displayName}</t:pagelink>
+			<div class="issue-summary">
+				
+				<div class="created">Created: <t:output format="literal:dd/MM/yyyy" value="project.creationDate"/></div>
+			</div>
+		</div>
+    </t:loop>
+</html>

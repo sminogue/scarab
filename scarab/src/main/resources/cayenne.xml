@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<domains project-version="3.0.0.1">
+<domain name="ScarabDomain">
+	<map name="ScarabMap" location="ScarabMap.map.xml"/>
+
+	<node name="ScarabNode"
+		 datasource="jdbc/scarab"
+		 factory="org.apache.cayenne.conf.JNDIDataSourceFactory">
+			<map-ref name="ScarabMap"/>
+	 </node>
+</domain>
+</domains>

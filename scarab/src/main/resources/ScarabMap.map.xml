@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map xmlns="http://cayenne.apache.org/schema/3.0/modelMap"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://cayenne.apache.org/schema/3.0/modelMap http://cayenne.apache.org/schema/3.0/modelMap.xsd"
+  project-version="3.0.0.1">
+	<property name="defaultPackage" value="net.theblackchamber.model"/>
+	<db-entity name="comment" catalog="scarab">
+		<db-attribute name="createdDate" type="TIMESTAMP" isMandatory="true" length="19"/>
+		<db-attribute name="creator" type="BIGINT" isMandatory="true" length="20"/>
+		<db-attribute name="id" type="BIGINT" isPrimaryKey="true" isGenerated="true" isMandatory="true" length="20"/>
+		<db-attribute name="issue" type="BIGINT" isMandatory="true" length="20"/>
+		<db-attribute name="text" type="VARCHAR" isMandatory="true" length="5000"/>
+	</db-entity>
+	<db-entity name="issue" catalog="scarab">
+		<db-attribute name="ID" type="BIGINT" isPrimaryKey="true" isGenerated="true" isMandatory="true" length="20"/>
+		<db-attribute name="assigned" type="BIGINT" length="20"/>
+		<db-attribute name="createdDate" type="TIMESTAMP" isMandatory="true" length="19"/>
+		<db-attribute name="description" type="VARCHAR" isMandatory="true" length="20000"/>
+		<db-attribute name="milestone" type="BIGINT" length="20"/>
+		<db-attribute name="project" type="BIGINT" isMandatory="true" length="20"/>
+		<db-attribute name="reporter" type="BIGINT" length="20"/>
+		<db-attribute name="status" type="VARCHAR" isMandatory="true" length="1"/>
+		<db-attribute name="subject" type="VARCHAR" isMandatory="true" length="100"/>
+	</db-entity>
+	<db-entity name="issue_label" catalog="scarab">
+		<db-attribute name="id" type="BIGINT" isPrimaryKey="true" isGenerated="true" isMandatory="true" length="20"/>
+		<db-attribute name="issue" type="BIGINT" isMandatory="true" length="20"/>
+		<db-attribute name="label" type="BIGINT" isMandatory="true" length="20"/>
+	</db-entity>
+	<db-entity name="label" catalog="scarab">
+		<db-attribute name="color" type="VARCHAR" isMandatory="true" length="7"/>
+		<db-attribute name="id" type="BIGINT" isPrimaryKey="true" isGenerated="true" isMandatory="true" length="20"/>
+		<db-attribute name="label" type="VARCHAR" isMandatory="true" length="45"/>
+	</db-entity>
+	<db-entity name="milestone" catalog="scarab">
+		<db-attribute name="id" type="BIGINT" isPrimaryKey="true" isGenerated="true" isMandatory="true" length="20"/>
+		<db-attribute name="name" type="VARCHAR" isMandatory="true" length="45"/>
+		<db-attribute name="project" type="BIGINT" isMandatory="true" length="20"/>
+	</db-entity>
+	<db-entity name="project" catalog="scarab">
+		<db-attribute name="creationDate" type="TIMESTAMP" length="19"/>
+		<db-attribute name="creator" type="BIGINT" length="20"/>
+		<db-attribute name="displayName" type="VARCHAR" isMandatory="true" length="50"/>
+		<db-attribute name="id" type="BIGINT" isPrimaryKey="true" isGenerated="true" isMandatory="true" length="20"/>
+		<db-attribute name="name" type="VARCHAR" length="50"/>
+	</db-entity>
+	<db-entity name="user" catalog="scarab">
+		<db-attribute name="email" type="VARCHAR" isMandatory="true" length="50"/>
+		<db-attribute name="id" type="BIGINT" isPrimaryKey="true" isGenerated="true" isMandatory="true" length="20"/>
+		<db-attribute name="joinDate" type="TIMESTAMP" isMandatory="true" length="19"/>
+		<db-attribute name="security_token" type="VARCHAR" length="100"/>
+		<db-attribute name="updated" type="TIMESTAMP" isMandatory="true" length="19"/>
+	</db-entity>
+	<obj-entity name="Comment" className="net.theblackchamber.model.Comment" dbEntityName="comment">
+		<obj-attribute name="createdDate" type="java.util.Date" db-attribute-path="createdDate"/>
+		<obj-attribute name="text" type="java.lang.String" db-attribute-path="text"/>
+	</obj-entity>
+	<obj-entity name="Issue" className="net.theblackchamber.model.Issue" dbEntityName="issue">
+		<obj-attribute name="createdDate" type="java.util.Date" db-attribute-path="createdDate"/>
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="description"/>
+		<obj-attribute name="status" type="java.lang.String" db-attribute-path="status"/>
+		<obj-attribute name="subject" type="java.lang.String" db-attribute-path="subject"/>
+	</obj-entity>
+	<obj-entity name="IssueLabel" className="net.theblackchamber.model.IssueLabel" dbEntityName="issue_label">
+	</obj-entity>
+	<obj-entity name="Label" className="net.theblackchamber.model.Label" dbEntityName="label">
+		<obj-attribute name="color" type="java.lang.String" db-attribute-path="color"/>
+		<obj-attribute name="label" type="java.lang.String" db-attribute-path="label"/>
+	</obj-entity>
+	<obj-entity name="Milestone" className="net.theblackchamber.model.Milestone" dbEntityName="milestone">
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+	</obj-entity>
+	<obj-entity name="Project" className="net.theblackchamber.model.Project" dbEntityName="project">
+		<obj-attribute name="creationDate" type="java.util.Date" db-attribute-path="creationDate"/>
+		<obj-attribute name="displayName" type="java.lang.String" db-attribute-path="displayName"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+	</obj-entity>
+	<obj-entity name="User" className="net.theblackchamber.model.User" dbEntityName="user">
+		<obj-attribute name="email" type="java.lang.String" db-attribute-path="email"/>
+		<obj-attribute name="joinDate" type="java.util.Date" db-attribute-path="joinDate"/>
+		<obj-attribute name="securityToken" type="java.lang.String" db-attribute-path="security_token"/>
+		<obj-attribute name="updated" type="java.util.Date" db-attribute-path="updated"/>
+	</obj-entity>
+	<db-relationship name="toIssue" source="comment" target="issue" toMany="false">
+		<db-attribute-pair source="issue" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toUser" source="comment" target="user" toMany="false">
+		<db-attribute-pair source="creator" target="id"/>
+	</db-relationship>
+	<db-relationship name="comments" source="issue" target="comment" toMany="true">
+		<db-attribute-pair source="ID" target="issue"/>
+	</db-relationship>
+	<db-relationship name="issueLabels" source="issue" target="issue_label" toMany="true">
+		<db-attribute-pair source="ID" target="issue"/>
+	</db-relationship>
+	<db-relationship name="toAssigned" source="issue" target="user" toMany="false">
+		<db-attribute-pair source="assigned" target="id"/>
+	</db-relationship>
+	<db-relationship name="toMilestone" source="issue" target="milestone" toMany="false">
+		<db-attribute-pair source="milestone" target="id"/>
+	</db-relationship>
+	<db-relationship name="toProject" source="issue" target="project" toMany="false">
+		<db-attribute-pair source="project" target="id"/>
+	</db-relationship>
+	<db-relationship name="toReporter" source="issue" target="user" toMany="false">
+		<db-attribute-pair source="reporter" target="id"/>
+	</db-relationship>
+	<db-relationship name="toIssue" source="issue_label" target="issue" toMany="false">
+		<db-attribute-pair source="issue" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toLabel" source="issue_label" target="label" toMany="false">
+		<db-attribute-pair source="label" target="id"/>
+	</db-relationship>
+	<db-relationship name="issueLabels" source="label" target="issue_label" toMany="true">
+		<db-attribute-pair source="id" target="label"/>
+	</db-relationship>
+	<db-relationship name="issues" source="milestone" target="issue" toMany="true">
+		<db-attribute-pair source="id" target="milestone"/>
+	</db-relationship>
+	<db-relationship name="toProject" source="milestone" target="project" toMany="false">
+		<db-attribute-pair source="project" target="id"/>
+	</db-relationship>
+	<db-relationship name="issues" source="project" target="issue" toMany="true">
+		<db-attribute-pair source="id" target="project"/>
+	</db-relationship>
+	<db-relationship name="milestones" source="project" target="milestone" toMany="true">
+		<db-attribute-pair source="id" target="project"/>
+	</db-relationship>
+	<db-relationship name="toUser" source="project" target="user" toMany="false">
+		<db-attribute-pair source="creator" target="id"/>
+	</db-relationship>
+	<db-relationship name="assigned" source="user" target="issue" toMany="true">
+		<db-attribute-pair source="id" target="assigned"/>
+	</db-relationship>
+	<db-relationship name="comments" source="user" target="comment" toMany="true">
+		<db-attribute-pair source="id" target="creator"/>
+	</db-relationship>
+	<db-relationship name="projects" source="user" target="project" toMany="true">
+		<db-attribute-pair source="id" target="creator"/>
+	</db-relationship>
+	<db-relationship name="reported" source="user" target="issue" toMany="true">
+		<db-attribute-pair source="id" target="reporter"/>
+	</db-relationship>
+	<obj-relationship name="comments" source="Issue" target="Comment" deleteRule="Deny" db-relationship-path="comments"/>
+	<obj-relationship name="toIssue" source="IssueLabel" target="Issue" deleteRule="Nullify" db-relationship-path="toIssue"/>
+	<obj-relationship name="issueLabels" source="Label" target="IssueLabel" deleteRule="Deny" db-relationship-path="issueLabels"/>
+	<obj-relationship name="issues" source="Milestone" target="Issue" deleteRule="Deny" db-relationship-path="issues"/>
+	<obj-relationship name="issues" source="Project" target="Issue" deleteRule="Deny" db-relationship-path="issues"/>
+	<obj-relationship name="milestones" source="Project" target="Milestone" deleteRule="Deny" db-relationship-path="milestones"/>
+	<obj-relationship name="toUser" source="Project" target="User" deleteRule="Nullify" db-relationship-path="toUser"/>
+	<obj-relationship name="assigned" source="User" target="Issue" deleteRule="Deny" db-relationship-path="assigned"/>
+	<obj-relationship name="comments" source="User" target="Comment" deleteRule="Deny" db-relationship-path="comments"/>
+	<obj-relationship name="projects" source="User" target="Project" deleteRule="Deny" db-relationship-path="projects"/>
+	<obj-relationship name="reported" source="User" target="Issue" deleteRule="Deny" db-relationship-path="reported"/>
+</data-map>

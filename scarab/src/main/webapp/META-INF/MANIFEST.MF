@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Created-By: Apache Maven
+Built-By: sminogue
+Build-Jdk: 1.6.0_45
+Specification-Title: Scarab Bug Tracker
+Specification-Version: 1.0-SNAPSHOT
+Implementation-Title: Scarab Bug Tracker
+Implementation-Version: 1.0-SNAPSHOT
+Implementation-Vendor-Id: net.theblackchamber
+

@@ -1,0 +1,38 @@
+body{
+	font-size: 14px;
+	font-style: normal;
+	ont-family: Helvetica, arial, freesans, clean, sans-serif;
+	line-height: 19px;
+	padding: 10px;
+}
+
+#header{
+	margin-bottom:10px;
+}
+
+#header td{
+	vertical-align: center;
+}
+
+.app-name-banner{
+	margin-left:20px;
+	font-size: 42px;
+	font-style: italic;
+	font-weight: bold;
+}
+
+.navbar-inner form{
+	margin: 0px !important;
+}
+.navbar-inner form input{
+	font-size: 12px;
+	line-height:15px;
+	padding-bottom:3px;
+	padding-top:3px;
+	margin-top:6px;
+	width:125px;
+}
+.fatal-error{
+	text-align: center;
+	color: red;
+}

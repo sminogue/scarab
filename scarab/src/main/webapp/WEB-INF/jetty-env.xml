@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure//EN" "http://jetty.mortbay.org/configure.dtd">
+
+<!--
+  Copy this template to jetty-env.xml and add the password.
+  
+  DO NOT CHECK jetty-env.xml INTO THE REPOSITORY!!!
+-->
+<Configure class="org.eclipse.jetty.webapp.WebAppContext">
+    <New id="ds" class="org.eclipse.jetty.plus.jndi.Resource">
+        <Arg>jdbc/scarab</Arg>
+        <Arg>
+            <New class="org.apache.commons.dbcp.BasicDataSource">
+                <Set name="url">jdbc:mysql://localhost:3306/scarab</Set>
+                <Set name="username">root</Set>
+                <Set name="password"></Set>
+                <Set name="initialSize">1</Set>
+                <Set name="minIdle">1</Set>
+                <Set name="maxActive">2</Set>
+                <Set name="maxIdle">2</Set>
+            </New>
+        </Arg>
+    </New>
+</Configure>

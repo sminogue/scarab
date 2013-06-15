@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration debug="false"
+	xmlns:log4j="http://jakarta.apache.org/log4j/">
+	
+
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<param name="Threshold" value="ALL" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d{MMM dd, yyyy hh:mm:ss a zzz} %-5p %F.%M:%L: %m%n" />
+		</layout>
+
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="LevelToMatch" value="DEBUG, WARN,INFO,ERROR, FATAL" />
+			<param name="AcceptOnMatch" value="true" />
+		</filter>
+	</appender>
+
+	<logger name="org.apache.tapestry5">
+		<level value="INFO" />
+		<appender-ref ref="CONSOLE" />
+	</logger>
+
+	<logger name="net.theblackchamber">
+		<level value="DEBUG" />
+		<appender-ref ref="CONSOLE" />
+	</logger>
+
+	<logger name="com.googlecode.flyway">
+		<level value="ALL" />
+		<appender-ref ref="CONSOLE" />
+	</logger>
+
+	<logger name="org.apache.tapestry5.TapestryFilter">
+		<level value="INFO" />
+		<appender-ref ref="CONSOLE" />
+	</logger>
+
+	<logger
+		name="org.apache.tapestry5.services.TapestryModule.ComponentClassResolver">
+		<level value="INFO" />
+		<appender-ref ref="CONSOLE" />
+	</logger>
+
+	<logger name="org.apache.cayenne.access.QueryLogger">
+		<level value="INFO" />
+		<appender-ref ref="CONSOLE" />
+	</logger>
+
+	<root>
+		<level value="ALL" />
+		<!-- <appender-ref ref="CONSOLE" /> -->
+	</root>
+
+</log4j:configuration>

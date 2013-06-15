@@ -1,0 +1,24 @@
+@CHARSET "UTF-8";
+.project-pane{
+	width: 300px;
+	float:left;
+	margin-right: 20px;
+}
+.project-pane .project-name{
+	font-size: 18px;
+}
+.project-pane .issue-summary{
+	margin-top:10px;
+}
+.project-pane .issue-summary .fixed-issue-summary{
+	margin-right: 15px;
+	color: green;
+}
+.project-pane .issue-summary .open-issue-summary{
+	color: red;
+}
+.project-pane .issue-summary .created{
+	float:right;
+	font-style: italic;
+	font-size:12px;
+}
