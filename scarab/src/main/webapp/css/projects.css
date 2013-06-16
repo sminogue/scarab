@@ -1,24 +1,56 @@
 @CHARSET "UTF-8";
-.project-pane{
+/*
+ * Styles for the projects page
+ */
+#projects-page .project-pane {
 	width: 300px;
-	float:left;
+	float: left;
 	margin-right: 20px;
 }
-.project-pane .project-name{
+
+#projects-page .project-pane .project-name {
 	font-size: 18px;
 }
-.project-pane .issue-summary{
-	margin-top:10px;
+
+#projects-page .project-pane .issue-summary {
+	margin-top: 10px;
 }
-.project-pane .issue-summary .fixed-issue-summary{
+
+#projects-page .project-pane .issue-summary .fixed-issue-summary {
 	margin-right: 15px;
 	color: green;
 }
-.project-pane .issue-summary .open-issue-summary{
+
+#projects-page .project-pane .issue-summary .open-issue-summary {
 	color: red;
 }
-.project-pane .issue-summary .created{
-	float:right;
+
+#projects-page .project-pane .issue-summary .created {
+	float: right;
 	font-style: italic;
-	font-size:12px;
+	font-size: 12px;
 }
+
+/*
+ * Styles for the Project page
+ */
+
+.nav-pills .count{
+	float:right;
+	font-weight: bold;
+}
+
+.project-lhs{
+	border-right-color: #ddd;
+	border-right-style: solid;
+	border-right-width: 1px;
+	padding-right: 15px;
+}
+
+
+
+
+
+
+
+

@@ -8,14 +8,14 @@
 	<script>
 		var activeNavBarButton = "projects";
 	</script>
-
-	<t:loop source="projects" value="project">
-		<div class="project-pane well">
-			<t:pagelink class="project-name" page="project" context="project.name">${project.displayName}</t:pagelink>
-			<div class="issue-summary">
-				
-				<div class="created">Created: <t:output format="literal:dd/MM/yyyy" value="project.creationDate"/></div>
+	<div id="projects-page">
+		<t:loop source="projects" value="project">
+			<div class="project-pane well">
+				<t:pagelink class="project-name" page="project" context="project.name">${project.displayName}</t:pagelink>
+				<div class="issue-summary">
+					<div class="created">Created: <t:output format="literal:dd/MM/yyyy" value="project.creationDate"/></div>
+				</div>
 			</div>
-		</div>
-    </t:loop>
+	    </t:loop>
+    </div>
 </html>

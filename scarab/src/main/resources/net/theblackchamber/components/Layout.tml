@@ -47,6 +47,12 @@
 			</form>
   		</div>
 	</div>
+	<!-- 
+	<ul class="breadcrumb">
+	  	<li><a href="/">Home</a> <span class="divider">/</span></li>
+	  	<li><a href="/Projects">Projects</a> <span class="divider">/</span></li>
+	  	<li class="active">My Library</li>
+	</ul> -->
 	<div id="content" class="body">
 		<div class="center-pane">
 		<t:body />

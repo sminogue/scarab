@@ -36,3 +36,15 @@ body{
 	text-align: center;
 	color: red;
 }
+
+.breadcrumb{
+	background-color: white;
+}
+
+.navbar{
+	margin-bottom: 0px;
+}
+
+.body{
+	margin-top: 20px;
+}

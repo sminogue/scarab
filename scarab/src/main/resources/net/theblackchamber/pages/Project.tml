@@ -8,7 +8,39 @@
 	<script>
 		var activeNavBarButton = "projects";
 	</script>
-
-	PROJECT DETAILS
-
+	<ul class="nav nav-tabs">
+	  	<li class="active">
+	    	<a href="#" id="issues-tab" >Issues</a>
+	  	</li>
+	  	<li><a href="#" id="milestones-tab">Milestones</a></li>
+	  	<button style="float:right;" type="button" class="btn btn-primary">Create Issue</button>
+	</ul>
+	<div id="project-issues-page" class="container-fluid">
+  		<div class="row-fluid">
+    		<div class="project-lhs span3">
+	      		<div class="project-control-panel stats">
+	      			<ul class="nav nav-pills nav-stacked">
+	      				<li class="active"><a href="#" class="issues-filter-link" >All Issues<span class="count">4</span></a></li>
+	      				<li><a href="#" class="issues-filter-link" >Assigned to Me<span class="count">1</span></a></li>
+	      				<li><a href="#" class="issues-filter-link" >Unassigned<span class="count">3</span></a></li>
+	      			</ul>
+	      		</div>
+	    	</div>
+	    	<div class="span9">
+	      		<!--Body content-->
+	      		RHS
+	    	</div>
+	    </div>
+  	</div>
+  	<div id="project-milestones-page" style="display:none;" class="container-fluid">
+  		<div class="row-fluid">
+    		<div class="project-lhs span3">
+	      		Milestones
+	    	</div>
+	    	<div class="span9">
+	      		<!--Body content-->
+	      		RHS
+	    	</div>
+	    </div>
+  	</div>
 </html>

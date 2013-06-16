@@ -27,6 +27,7 @@ public class SiteStack implements JavaScriptStack
         List<Asset> assets = new ArrayList<Asset>();
         assets.add(assetSource.getUnlocalizedAsset("context:js/aaUtility.js"));
         assets.add(assetSource.getUnlocalizedAsset("context:js/layout.js"));
+        assets.add(assetSource.getUnlocalizedAsset("context:js/projects.js"));
         assets.add(assetSource.getUnlocalizedAsset("context:lib/jquery-cookie/jquery.cookie.js"));
         
         return assets;

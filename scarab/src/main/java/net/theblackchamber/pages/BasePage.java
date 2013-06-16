@@ -5,7 +5,7 @@ import java.util.List;
 
 import net.theblackchamber.model.User;
 
-import org.apache.cayenne.BaseContext;
+import org.apache.cayenne.access.DataContext;
 import org.apache.cayenne.exp.Expression;
 import org.apache.cayenne.exp.ExpressionFactory;
 import org.apache.cayenne.query.SelectQuery;
@@ -17,7 +17,7 @@ import org.apache.cayenne.query.SelectQuery;
  * @author sminogue
  * 
  */
-public abstract class PageBase {
+public abstract class BasePage {
 
 	/**
 	 * Find an existing use in the database by securityToken.
@@ -72,7 +72,7 @@ public abstract class PageBase {
 
 		Expression qualifier = ExpressionFactory.matchExp(attribute, value);
 
-		List<User> users = BaseContext.getThreadObjectContext().performQuery(
+		List<User> users = DataContext.createDataContext().performQuery(
 				new SelectQuery(User.class, qualifier));
 
 		if (users == null) {

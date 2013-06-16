@@ -21,7 +21,7 @@ import org.slf4j.Logger;
  * 
  */
 
-public class Projects extends PageBase {
+public class Projects extends BasePage {
 
 	@Inject
 	private Logger		logger;

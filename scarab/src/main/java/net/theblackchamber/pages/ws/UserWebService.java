@@ -6,7 +6,7 @@ import java.util.UUID;
 
 import net.theblackchamber.constants.ApplicationConstants;
 import net.theblackchamber.model.User;
-import net.theblackchamber.pages.PageBase;
+import net.theblackchamber.pages.BasePage;
 
 import org.apache.cayenne.BaseContext;
 import org.apache.commons.lang3.StringUtils;
@@ -28,7 +28,7 @@ import org.slf4j.Logger;
  * @author sminogue
  * 
  */
-public class UserWebService extends PageBase {
+public class UserWebService extends BasePage {
 
 	@Inject
 	private Logger	logger;
