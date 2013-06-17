@@ -6,13 +6,17 @@
       xmlns:p="tapestry:parameter">
 
 	<script>
-		var activeNavBarButton = "projects";
+		activeNavBarButton = "projects";
 	</script>
 	<div id="projects-page">
 		<t:loop source="projects" value="project">
 			<div class="project-pane well">
-				<t:pagelink class="project-name" page="project" context="project.name">${project.displayName}</t:pagelink>
+				<a href="/project/${project.name}/open/all">${project.displayName}</a>
 				<div class="issue-summary">
+					<div class="project-progress progress">
+						<div class="bar bar-success" rel="tooltip" title="${project.closedIssueCount} Closed Issues" style="width: ${project.closedPercentage}%;"></div>
+						<div class="bar bar-danger" rel="tooltip" title="${project.openIssueCount} Open Issues" style="width: ${project.openPercentage}%;"></div>
+					</div>
 					<div class="created">Created: <t:output format="literal:dd/MM/yyyy" value="project.creationDate"/></div>
 				</div>
 			</div>

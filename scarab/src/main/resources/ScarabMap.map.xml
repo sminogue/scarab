@@ -56,6 +56,7 @@
 		<obj-attribute name="text" type="java.lang.String" db-attribute-path="text"/>
 	</obj-entity>
 	<obj-entity name="Issue" className="net.theblackchamber.model.Issue" dbEntityName="issue">
+		<obj-attribute name="assigned" type="java.lang.Integer" db-attribute-path="assigned"/>
 		<obj-attribute name="createdDate" type="java.util.Date" db-attribute-path="createdDate"/>
 		<obj-attribute name="description" type="java.lang.String" db-attribute-path="description"/>
 		<obj-attribute name="status" type="java.lang.String" db-attribute-path="status"/>

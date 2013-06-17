@@ -56,6 +56,8 @@
 	
 	$(document).ready(function() {
 
+		
+		
 		$('.navbar-inner .active').removeClass('active');
 		
 		if (!Utility.cookiesEnabled) {
@@ -85,6 +87,10 @@
 		navigator.id.watch({
 			loggedInUser : currentUser,
 			onlogin : function(assertion) {
+				if($.cookie("scarab")){
+					showLogoutLink();
+					return;
+				}
 				showLoggingIn();
 				$.ajax({
 					type : 'POST',
@@ -118,6 +124,10 @@
 
 			},
 			onlogout : function() {
+				if(!$.cookie("scarab")){
+					showLoginLink();
+					return;
+				}
 				showLoggingOut();
 				$.ajax({
 					type : 'POST',

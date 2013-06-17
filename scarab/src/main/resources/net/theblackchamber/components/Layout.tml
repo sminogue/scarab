@@ -20,6 +20,7 @@
 		var loggingOut = '${message:logging.out.text}';
 		var login = '${message:login.text}';
 		var logout = '${message:logout.text}';
+		var activeNavBarButton = "";
 	</script>
 	<div id="header">
 		<table style="width:100%;">

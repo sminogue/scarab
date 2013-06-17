@@ -7,8 +7,8 @@ import java.util.UUID;
 import net.theblackchamber.constants.ApplicationConstants;
 import net.theblackchamber.model.User;
 import net.theblackchamber.pages.BasePage;
+import net.theblackchamber.utility.CayenneUtility;
 
-import org.apache.cayenne.BaseContext;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -29,7 +29,7 @@ import org.slf4j.Logger;
  * 
  */
 public class UserWebService extends BasePage {
-
+	
 	@Inject
 	private Logger	logger;
 
@@ -45,13 +45,13 @@ public class UserWebService extends BasePage {
 	 * @throws Exception
 	 */
 	private User getOrCreateUser(String email) throws Exception {
-
+		
 		User user = findUserByEmail(email);
 
 		if (user == null) {
 			// No User exists... so create them
 
-			user = BaseContext.getThreadObjectContext().newObject(User.class);
+			user = CayenneUtility.createContext().newObject(User.class);
 			user.setEmail(email);
 			user.setJoinDate(new Date());
 			user.setUpdated(new Date());
@@ -108,22 +108,38 @@ public class UserWebService extends BasePage {
 
 			JSONObject obj = new JSONObject(jsonString);
 
-			// Lookup or insert record into database
+			// See if persona authorized the user
+			if(!StringUtils.equalsIgnoreCase(obj.getString("status"),"okay")){
+				//User is not really logged in. Log it and return a brush off.
+				//(Kinda like a girl giving you the number for pizza hut rather than her real number.)
+				logger.error("Failed to authenticate persona assertion: " + obj.getString("reason"));
+				return obj;
+			}
+			
+			//Find user by email
 			User user = getOrCreateUser(obj.getString("email"));
-
-			// Add security token to the user
-			UUID uid = UUID.randomUUID();
-			user.setSecurityToken(uid.toString());
-			user.getObjectContext().commitChanges();
-			obj.put("securityToken", uid.toString());
-
-			// Do the shiro login
-			// TODO when we add user permissions. For now everyone can do
-			// everything.
-
+			
+			String securityToken = cookies.readCookieValue("scarab");
+			if(StringUtils.isBlank(securityToken) || !StringUtils.equals(securityToken, user.getSecurityToken())){
+				//If securityToken is blank or doesnt match the DB... 
+				//Create a new security token and update the DB.
+				logger.debug("Blank or non-matching security token. Updating.");
+				UUID uid = UUID.randomUUID();
+				user.setSecurityToken(uid.toString());
+				user.getObjectContext().commitChanges();
+				obj.put("securityToken", uid.toString());
+			}else{
+				//Security token exists and matches the user in DB.
+				//This means user is logged in. Already.
+				logger.debug("User already logged in and security token matches. Do Nothing.");
+				obj.put("securityToken", securityToken);
+			}
+			
+			//We be done.
+			
 			// Return good result to caller.
 			return obj;
-
+			
 		} catch (Exception e) {
 			logger.error("Failed while attempting to login user.", e);
 			throw e;

@@ -15,6 +15,7 @@ import net.theblackchamber.model.Comment;
  */
 public abstract class _Issue extends CayenneDataObject {
 
+    public static final String ASSIGNED_PROPERTY = "assigned";
     public static final String CREATED_DATE_PROPERTY = "createdDate";
     public static final String DESCRIPTION_PROPERTY = "description";
     public static final String STATUS_PROPERTY = "status";
@@ -22,6 +23,13 @@ public abstract class _Issue extends CayenneDataObject {
     public static final String COMMENTS_PROPERTY = "comments";
 
     public static final String ID_PK_COLUMN = "ID";
+
+    public void setAssigned(Integer assigned) {
+        writeProperty("assigned", assigned);
+    }
+    public Integer getAssigned() {
+        return (Integer)readProperty("assigned");
+    }
 
     public void setCreatedDate(Date createdDate) {
         writeProperty("createdDate", createdDate);

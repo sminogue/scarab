@@ -47,7 +47,10 @@
 	padding-right: 15px;
 }
 
-
+#projects-page .project-progress{
+	height: 15px;
+	margin-bottom: 2px;
+}
 
 
 
