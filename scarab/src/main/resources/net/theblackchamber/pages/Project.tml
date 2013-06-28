@@ -8,12 +8,42 @@
 	<script>
 		var activeNavBarButton = "projects";
 	</script>
+	<div id="create-issue-dialog" class="modal hide fade">
+		 <div class="modal-header">
+		 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		 	<h3>Create Issue</h3>
+		 </div>
+		 <div class="modal-body container-fluid">
+		    <div class="row-fluid">
+		    	<div class="span9">
+		    		<div>
+		    			<input type="text" placeholder="Title" style="width:98%" />
+		    		</div>
+		    		<div>
+		    			<textarea rows="10" style="width:98%" placeholder="Description"></textarea>
+		    		</div>
+		    	</div>
+		    	<div class="span3">
+		    		<ul class="nav nav-pills nav-stacked">
+			    		<t:loop source="labels" value="label">
+			    			<li><a href="#" class="create-label">${label.label}</a></li>
+		      			</t:loop>
+	      			</ul>
+		    	</div>
+		    </div>
+		 </div>
+		<div class="modal-footer">
+		  <a href="#" class="btn btn-primary">Create</a>
+		</div>
+	</div>
+	
 	<ul class="nav nav-tabs">
 	  	<li class="active">
 	    	<a href="#" id="issues-tab" >Issues</a>
 	  	</li>
-	  	<!-- li><a href="#" id="milestones-tab">Milestones</a></li -->
-	  	<button style="float:right;" type="button" class="btn btn-primary">Create Issue</button>
+	  	<!-- li><a href="#" id="milestones-tab">Milestones</a></li 
+	  	<button style="float:right;" type="button" class="btn btn-primary">Create Issue</button>-->
+	  	<a href="#create-issue-dialog"  role="button" style="float:right;" class="btn" id="project-create-issue-button">Create Issue</a>
 	</ul>
 	<div id="project-issues-page" class="container-fluid">
   		<div class="row-fluid">

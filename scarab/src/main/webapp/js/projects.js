@@ -27,4 +27,20 @@
 		$(this).parent().addClass('active');
 	});
 	
+	$('#project-create-issue-button').bind('click',function(e){
+		e.preventDefault();
+		$('#create-issue-dialog').modal('show')
+		$('.create-label').on('click',function(e2){
+			e2.preventDefault();
+			
+			if($(this).parent().hasClass('active')){
+				$(this).parent().removeClass('active');
+			}else{
+				$(this).parent().addClass('active');
+			}
+			
+			
+		});
+	});
+	
 })(jQuery);

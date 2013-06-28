@@ -10,3 +10,6 @@ INSERT INTO issue (subject,description,createdDate,status,reporter,assigned,proj
 INSERT INTO issue (subject,description,createdDate,status,reporter,assigned,project) VALUES ('SUBJECT 5','DESCRIPTION DESCRIPTION',NOW(),'C',1,1,2);
 INSERT INTO issue (subject,description,createdDate,status,reporter,assigned,project) VALUES ('SUBJECT 6','DESCRIPTION DESCRIPTION',NOW(),'C',1,1,2);
 INSERT INTO issue (subject,description,createdDate,status,reporter,assigned,project) VALUES ('SUBJECT 7','DESCRIPTION DESCRIPTION',NOW(),'C',1,1,2);
+
+INSERT INTO label (label,color) VALUES ('Bug','#F70D1A');
+INSERT INTO label (label,color) VALUES ('Enhancement','#7D0552');

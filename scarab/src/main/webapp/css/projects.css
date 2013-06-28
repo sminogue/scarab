@@ -52,7 +52,9 @@
 	margin-bottom: 2px;
 }
 
-
+.nav-pills li{
+	white-space: nowrap;
+}
 
 
 
